@@ -10,7 +10,7 @@
     "start": "rimraf .docz && docz dev",
     "build": "docz build && webpack",
     "lint-staged": "lint-staged",
-    "lint:ts": "tsc"
+    "lint:ts": "tslint -c tslint.json 'components/**/*.tsx'"
   },
   "repository": {
     "type": "git",
@@ -44,6 +44,7 @@
     "react-hot-loader": "^4.11.1",
     "rimraf": "^2.6.3",
     "source-map-loader": "^0.2.4",
+    "tslint": "^5.17.0",
     "tslint-config-prettier": "^1.18.0",
     "tslint-eslint-rules": "^5.4.0",
     "tslint-react": "^4.0.0",
@@ -56,10 +57,9 @@
       "prettier --write",
       "git add"
     ],
-    "**/*.{ts,tsx}": "npm run lint:tsc",
-    "**/*.scss": "stylelint --syntax scss"
+    "**/*.{ts,tsx}": "npm run lint:ts"
   },
-   "husky": {
+  "husky": {
     "hooks": {
       "pre-commit": "npm run lint-staged"
     }
