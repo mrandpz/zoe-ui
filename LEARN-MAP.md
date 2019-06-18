@@ -9,6 +9,30 @@ source-map-loader使用TypeScript输出的sourcemap文件来告诉webpack何时�
 创建一个tslint.json 文件，作为代码规范,
 yarn add --dev tslint-react tslint-eslint-rules tslint-config-prettier
 
+增加stylelint
+yarn add stylelint-config-standard stylelint-config-rational-order stylelint-config-prettier stylelint-order stylelint-declaration-block-no-ignored-properties --dev
+
+安装husky+lint-staged
+yarn add  husky lint-staged --dev
+配置package.json在commit（自行决定）的时候执行检查
+
+```
+
+ "lint-staged": {
+    "**/*.{js,jsx,less}": [
+      "prettier --write",
+      "git add"
+    ],
+    "**/*.{js,jsx}": "npm run lint-staged:js",
+    "**/*.less": "stylelint --syntax less"
+  },
+   "husky": {
+    "hooks": {
+      "pre-commit": "npm run lint-staged"
+    }
+  }
+```
+
 创建文档 docz  
 yarn add docz docz-theme-default --dev
 
@@ -29,6 +53,16 @@ package.json
 },
 ```  
 
-创建示例：button文件夹，创建一个webpack配置文件
+创建示例：button文件夹，创建一个webpack配置文件,简易版打包
 yarn add webpack webpack-cli --dev
+
+增加 .prettierrc
+项目根目录添加tslint.json, 这里使用官方推荐配置: 
+
+```  
+{
+  "extend": [ "tslint-config-prettier"],
+}
+```  
+增加 .prettierignore
 
