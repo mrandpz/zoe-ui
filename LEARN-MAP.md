@@ -1,0 +1,34 @@
+npm install --save react react-dom @types/react @types/react-dom
+
+添加开发依赖   
+npm install --save-dev typescript awesome-typescript-loader source-map-loader 
+awesome-typescript-loader可以让Webpack使用TypeScript的标准配置文件 tsconfig.json编译TypeScript代码。  
+source-map-loader使用TypeScript输出的sourcemap文件来告诉webpack何时生成 自己的sourcemaps。 这就允许你在调试最终生成的文件时就好像在调试TypeScript源码一样。 
+
+创建一个tsconfig.json 文件
+创建一个tslint.json 文件，作为代码规范,
+yarn add --dev tslint-react tslint-eslint-rules tslint-config-prettier
+
+创建文档 docz  
+yarn add docz docz-theme-default --dev
+
+支持scss，postcss
+yarn add docz-plugin-css --dev
+
+.docz 有缓存，每次启动都重新清缓存
+yarn add rimraf --dev
+
+此时启动docz会有报错，Cannot read property 'expirationTime' of undefined， 安装热更新文件
+yarn add react-hot-loader@latest --dev
+
+package.json  
+```  
+"scripts": {
+  "start": "rimraf .docz && docz dev",
+  "build": "docz build"
+},
+```  
+
+创建示例：button文件夹，创建一个webpack配置文件
+yarn add webpack webpack-cli --dev
+
