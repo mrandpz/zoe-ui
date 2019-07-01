@@ -49,7 +49,6 @@ if (env === 'development') {
   function tag() {
     console.log('tagging');
     const { version } = JSON.parse(packageJson);
-    console.log(packageJson);
     execSync(`git tag ${version}`);
     execSync(`git push origin ${version}:${version}`);
     execSync('git push origin master:master');
