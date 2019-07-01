@@ -3,6 +3,8 @@ const sass = require('gulp-sass');
 const path = require('path');
 const fs = require('fs');
 const merge2 = require('merge2');
+const watch = require('gulp-watch');
+
 // 获取路径
 
 const watchPath = './components/**/style/*.scss';
@@ -27,12 +29,11 @@ gulp.task('compileSass', function() {
     return gulp
       .src(inPath)
       .pipe(sass({ outputStyle: 'expanded' }).on('error', sass.logError))
-      .pipe(outPath);
+      .pipe(gulp.dest(outPath));
   });
-  console.log(tasks);
   return merge2(tasks);
 });
 
 gulp.task('default', function() {
-  gulp.watch(scssPath, gulp.series('compileSass'));
+  watch(`${scssPath}/**/*.scss`, gulp.series('compileSass'));
 });

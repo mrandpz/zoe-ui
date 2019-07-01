@@ -41,6 +41,7 @@
     "docz-plugin-css": "^0.11.0",
     "docz-theme-default": "^1.2.0",
     "gulp": "^4.0.2",
+    "gulp-watch": "^5.0.1",
     "husky": "^2.4.1",
     "lint-staged": "^8.2.1",
     "merge2": "^1.2.3",
@@ -60,7 +61,11 @@
       "prettier --write",
       "git add"
     ],
-    "**/*.{ts,tsx}": "npm run lint:ts"
+    "**/*.{ts,tsx}": "npm run lint:ts",
+    "{components}/**/*.scss": [
+      "stylelint --syntax scss",
+      "git add"
+    ]
   },
   "husky": {
     "hooks": {
