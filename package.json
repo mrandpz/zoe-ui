@@ -7,8 +7,10 @@
     "test": "test"
   },
   "scripts": {
-    "start": "rimraf .docz && docz dev",
-    "build": "docz build && webpack",
+    "start": "cross-env NODE_ENV=development gulp",
+    "docz:dev": "rimraf .docz && docz dev",
+    "build": "cross-env NODE_ENV=production && docz build && webpack",
+    "push": "cross-env NODE_ENV=production gulp",
     "lint-staged": "lint-staged",
     "lint:ts": "tslint -c tslint.json 'components/**/*.tsx'"
   },
@@ -37,6 +39,7 @@
   "devDependencies": {
     "awesome-typescript-loader": "^5.2.1",
     "babel-plugin-import": "^1.12.0",
+    "cross-env": "^5.2.0",
     "docz": "^1.2.0",
     "docz-plugin-css": "^0.11.0",
     "docz-theme-default": "^1.2.0",

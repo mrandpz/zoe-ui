@@ -71,4 +71,6 @@ TODO: ant的css是单独引入的，如果要以es6的方式去引入，则需�
 
 写一个gulp用来从 .scss 输出css 安装gulp-sass gulp-css
 
+用gulp分别规范，本地测试流程，打包流程(设置版本号，提交代码，等)
+
 
