@@ -73,4 +73,41 @@ TODO: ant的css是单独引入的，如果要以es6的方式去引入，则需�
 
 用gulp分别规范，本地测试流程，打包流程(设置版本号，提交代码，等)
 
+增加测试：
+
+1.安装
+npm i jest @types/jest ts-jest -D
+
+增加jest.config.js 文件
+```
+module.exports = {
+  "roots": [
+    "<rootDir>/components"
+  ],
+  "transform": {
+    "^.+\\.tsx?$": "ts-jest"
+  },
+}
+```
+
+2.enzyme
+npm i enzyme @types/enzyme enzyme-to-json enzyme-adapter-react-16 @types/enzyme-adapter-react-16  -D
+
+```
+module.exports = {
+  // OTHER PORTIONS AS MENTIONED BEFORE
+
+  // Setup Enzyme
+  "snapshotSerializers": ["enzyme-to-json/serializer"],
+  "setupTestFrameworkScriptFile": "<rootDir>/src/setupEnzyme.ts",
+}
+```
+
+```
+"test": "jest",
+  "test:watch": "jest --watch",
+  "test:coverage": "jest --coverage"
+```
+
+
 

@@ -1,6 +1,6 @@
 {
   "name": "npm-package",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A npm package build for own learn",
   "main": "index.js",
   "directories": {
@@ -10,9 +10,10 @@
     "start": "cross-env NODE_ENV=development gulp",
     "docz:dev": "rimraf .docz && docz dev",
     "build": "cross-env NODE_ENV=production && docz build && webpack",
-    "push": "cross-env NODE_ENV=production gulp",
+    "tag": "cross-env NODE_ENV=production gulp",
     "lint-staged": "lint-staged",
-    "lint:ts": "tslint -c tslint.json 'components/**/*.tsx'"
+    "lint:ts": "tslint -c tslint.json 'components/**/*.tsx'",
+    "test": "jest"
   },
   "repository": {
     "type": "git",
@@ -37,21 +38,30 @@
     "stylelint-order": "^3.0.0"
   },
   "devDependencies": {
+    "@types/enzyme": "^3.10.1",
+    "@types/jest": "^24.0.15",
     "awesome-typescript-loader": "^5.2.1",
     "babel-plugin-import": "^1.12.0",
     "cross-env": "^5.2.0",
     "docz": "^1.2.0",
     "docz-plugin-css": "^0.11.0",
     "docz-theme-default": "^1.2.0",
+    "enzyme": "^3.10.0",
+    "enzyme-adapter-react-16": "^1.14.0",
+    "enzyme-to-json": "^3.3.5",
     "gulp": "^4.0.2",
     "gulp-sass": "^4.0.2",
     "gulp-watch": "^5.0.1",
     "husky": "^2.4.1",
+    "identity-obj-proxy": "^3.0.0",
+    "jest": "^24.8.0",
     "lint-staged": "^8.2.1",
     "merge-stream": "^2.0.0",
     "react-hot-loader": "^4.11.1",
+    "react-test-renderer": "^16.8.6",
     "rimraf": "^2.6.3",
     "source-map-loader": "^0.2.4",
+    "ts-jest": "^24.0.2",
     "tslint": "^5.17.0",
     "tslint-config-prettier": "^1.18.0",
     "tslint-eslint-rules": "^5.4.0",
