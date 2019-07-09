@@ -7,10 +7,10 @@
     "test": "test"
   },
   "scripts": {
-    "start": "cross-env NODE_ENV=development gulp",
+    "start": "node ./scripts/run.js",
     "docz:dev": "rimraf .docz && docz dev",
     "build": "cross-env NODE_ENV=production && docz build && webpack",
-    "tag": "cross-env NODE_ENV=production gulp",
+    "tag": "node ./scripts/tag.js",
     "lint-staged": "lint-staged",
     "lint:ts": "tslint -c tslint.json 'components/**/*.tsx'",
     "test": "jest"
