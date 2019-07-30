@@ -1,4 +1,5 @@
 import * as React from 'react';
+import './style/index.scss';
 
 export interface ButtonProps {
   compiler: string;

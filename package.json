@@ -13,7 +13,8 @@
     "tag": "node ./scripts/tag.js",
     "lint-staged": "lint-staged",
     "lint:ts": "tslint -c tslint.json 'components/**/*.tsx'",
-    "test": "jest"
+    "test": "jest",
+    "webpack": "webpack"
   },
   "repository": {
     "type": "git",
@@ -29,6 +30,8 @@
   "dependencies": {
     "@types/react": "^16.8.20",
     "@types/react-dom": "^16.8.4",
+    "css-loader": "^3.1.0",
+    "postcss-loader": "^3.0.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "stylelint-config-prettier": "^5.2.0",
@@ -57,9 +60,12 @@
     "jest": "^24.8.0",
     "lint-staged": "^8.2.1",
     "merge-stream": "^2.0.0",
+    "mini-css-extract-plugin": "^0.8.0",
+    "node-sass": "^4.12.0",
     "react-hot-loader": "^4.11.1",
     "react-test-renderer": "^16.8.6",
     "rimraf": "^2.6.3",
+    "sass-loader": "^7.1.0",
     "source-map-loader": "^0.2.4",
     "ts-jest": "^24.0.2",
     "tslint": "^5.17.0",

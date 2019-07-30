@@ -2,7 +2,7 @@
   "compilerOptions": {
     "outDir": "./dist/",
     "sourceMap": true,
-    "noImplicitAny": true,
+    "noImplicitAny": false, // 调试暂时关闭对any的检查
     "module": "commonjs",
     "target": "es5",
     "jsx": "react"
