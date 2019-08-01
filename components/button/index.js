@@ -1,15 +1,12 @@
 import * as React from 'react';
-
-export interface ButtonProps {
-  compiler: string;
-  framework: string;
-}
-
 // 'ButtonProps' describes the shape of props.
 // State is never set so we use the '{}' type.
-export default class Button extends React.Component<ButtonProps, {}> {
-  name: string = '1223234';
-  public render() {
+export default class Button extends React.Component {
+  constructor() {
+    super(...arguments);
+    this.name = '1223234';
+  }
+  render() {
     return (
       <h1 className="test">
         Button from {this.props.compiler} and {this.props.framework}! {this.name}
