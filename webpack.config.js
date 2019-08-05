@@ -1,64 +1,56 @@
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+/* eslint no-param-reassign: 0 */
+// This config is for building dist files
+const getWebpackConfig = require('./gulpConfig/getWebpackConfig');
+// const PacktrackerPlugin = require('@packtracker/webpack-plugin');
 
-module.exports = {
-  mode: 'production',
-  entry: './components/index.tsx',
-  output: {
-    filename: '[name].js',
-    path: __dirname + '/dist',
-    library: 'useless',
-    libraryTarget: 'umd',
-  },
+const { webpack } = getWebpackConfig;
 
-  // Enable sourcemaps for debugging webpack's output.
-  devtool: 'source-map',
+// noParse still leave `require('./locale' + name)` in dist files
+// ignore is better: http://stackoverflow.com/q/25384360
+function ignoreMomentLocale(webpackConfig) {
+  delete webpackConfig.module.noParse;
+  webpackConfig.plugins.push(new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/));
+}
 
-  resolve: {
-    // Add '.ts' and '.tsx' as resolvable extensions.
-    extensions: ['.ts', '.tsx', '.js', '.json'],
-  },
+function addLocales(webpackConfig) {
+  let packageName = 'antd-with-locales';
+  if (webpackConfig.entry['antd.min']) {
+    packageName += '.min';
+  }
+  webpackConfig.entry[packageName] = './index-with-locales.js';
+  webpackConfig.output.filename = '[name].js';
+}
 
-  module: {
-    rules: [
-      // All files with a '.ts' or '.tsx' extension will be handled by 'awesome-typescript-loader'.
-      { test: /\.tsx?$/, loader: 'awesome-typescript-loader' },
+// 日期类处理，暂时不需要
+function externalMoment(config) {
+  config.externals.moment = {
+    root: 'moment',
+    commonjs2: 'moment',
+    commonjs: 'moment',
+    amd: 'moment',
+  };
+}
 
-      // All output '.js' files will have any sourcemaps re-processed by 'source-map-loader'.
-      { enforce: 'pre', test: /\.js$/, loader: 'source-map-loader' },
-      {
-        test: /\.(sa|sc|c)ss$/,
-        use: [
-          process.env.NODE_ENV === 'development' ? 'style-loader' : MiniCssExtractPlugin.loader,
-          'css-loader',
-          'sass-loader',
-        ],
-      },
-    ],
-  },
+const webpackConfig = getWebpackConfig(false);
+if (process.env.RUN_ENV === 'PRODUCTION') {
+  webpackConfig.forEach(config => {
+    ignoreMomentLocale(config);
+    externalMoment(config);
+    addLocales(config);
+    // https://docs.packtracker.io/uploading-your-webpack-stats/webpack-plugin
+    // 暂时不需要
+    // config.plugins.push(
+    //   new PacktrackerPlugin({
+    //     project_token: '8adbb892-ee4a-4d6f-93bb-a03219fb6778',
+    //     upload: process.env.CI === 'true',
+    //     fail_build: true,
+    //     exclude_assets: name => !['antd.min.js', 'antd.min.css'].includes(name),
+    //   }),
+    // );
+  });
+}
 
-  // When importing a module whose path matches one of the following, just
-  // assume a corresponding global variable exists and use that instead.
-  // This is important because it allows us to avoid bundling all of our
-  // dependencies, which allows browsers to cache those libraries between builds.
-  externals: {
-    react: 'React',
-    'react-dom': 'ReactDOM',
-  },
-  plugins: [
-    new MiniCssExtractPlugin({
-      filename: '[name].css',
-    }),
-  ],
-  optimization: {
-    splitChunks: {
-      cacheGroups: {
-        styles: {
-          name: 'styles',
-          test: /\.css$/,
-          chunks: 'all',
-          enforce: true,
-        },
-      },
-    },
-  },
-};
+// module.exports = webpackConfig;
+
+// 没用到moment.js所以暂时不需要
+module.exports = {};
