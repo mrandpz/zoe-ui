@@ -1,5 +1,5 @@
 {
-  "name": "antd",
+  "name": "cpant",
   "version": "1.0.2",
   "description": "A npm package build for own learn",
   "main": "lib/index.js",
@@ -11,14 +11,12 @@
     "es"
   ],
   "scripts": {
-    "start": "node ./scripts/run.js",
+    "build": "node ./scripts/run.js",
     "docz:dev": "rimraf .docz && docz dev",
-    "build": "cross-env NODE_ENV=production && docz build && webpack",
     "tag": "node ./scripts/tag.js",
     "lint-staged": "lint-staged",
     "lint:ts": "tslint -c tslint.json 'components/**/*.tsx'",
-    "test": "jest",
-    "webpack": "webpack"
+    "test": "jest"
   },
   "repository": {
     "type": "git",
@@ -76,7 +74,6 @@
     "enzyme-to-json": "^3.3.5",
     "gulp": "^4.0.2",
     "gulp-babel": "^8.0.0",
-    "gulp-sass": "^4.0.2",
     "gulp-sourcemaps": "^2.6.5",
     "gulp-strip-code": "^0.1.4",
     "gulp-typescript": "^5.0.1",
@@ -90,7 +87,6 @@
     "lint-staged": "^8.2.1",
     "merge-stream": "^2.0.0",
     "mini-css-extract-plugin": "^0.8.0",
-    "node-sass": "^4.12.0",
     "optimize-css-assets-webpack-plugin": "^5.0.3",
     "postcss": "^7.0.17",
     "react-hot-loader": "^4.11.1",
@@ -98,7 +94,6 @@
     "require-json5": "^1.0.2",
     "rimraf": "^2.6.3",
     "rucksack-css": "^1.0.2",
-    "sass-loader": "^7.1.0",
     "source-map-loader": "^0.2.4",
     "through2": "^3.0.1",
     "ts-jest": "^24.0.2",

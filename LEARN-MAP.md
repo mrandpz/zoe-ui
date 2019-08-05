@@ -109,6 +109,5 @@ module.exports = {
   "test:coverage": "jest --coverage"
 ```
 
-tips：
-手动增加gulp编译antd.less
+tips：整理文档
 

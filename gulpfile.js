@@ -15,7 +15,7 @@ const { getProjectPath } = require('./gulpConfig/utils/projectHelper');
 const tsConfig = require('./gulpConfig/getTSCommonConfig')();
 const BabelCommonConfig = require('./gulpConfig/BabelCommonConfig');
 const replaceLib = require('./gulpConfig/replaceLib');
-// ant-tool
+
 const getConfig = require('./gulpConfig/tool-config');
 const { cssInjection } = require('./gulpConfig/utils/styleUtil');
 const transformLess = require('./gulpConfig/transformLess');

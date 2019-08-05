@@ -47,13 +47,13 @@ function getWebpackConfig(modules) {
   ]);
 
   // Other package
-  if (pkg.name !== 'antd') {
+  if (pkg.name !== 'cpant') {
     babelConfig.plugins.push([
       resolve('babel-plugin-import'),
       {
         style: 'css',
         libraryDirectory: 'es',
-        libraryName: 'antd',
+        libraryName: 'cpant',
       },
       'other-package-babel-plugin-import', // 这是啥子玩意
     ]);
@@ -184,11 +184,10 @@ function getWebpackConfig(modules) {
       new webpack.BannerPlugin(`
 ${pkg.name} v${pkg.version}
 
-Copyright 2015-present, Alipay, Inc.
-All rights reserved.
+Mr.pz write ui framework from 0,嘻嘻
       `),
       new WebpackBar({
-        name: '🚚  Ant Design Tools',
+        name: '🚚  学习ant-tool',
         color: '#2f54eb',
       }),
       new CleanUpStatsPlugin(),
