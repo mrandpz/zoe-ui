@@ -117,13 +117,13 @@
     "webpackbar": "^3.2.0"
   },
   "lint-staged": {
-    "**/*.{js,ts,tsx,scss}": [
+    "**/*.{js,ts,tsx,less}": [
       "prettier --write",
       "git add"
     ],
     "**/*.{ts,tsx}": "npm run lint:ts",
-    "{components}/**/*.scss": [
-      "stylelint --syntax scss",
+    "{components}/**/*.less": [
+      "stylelint --syntax less",
       "git add"
     ]
   },

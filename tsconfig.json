@@ -12,6 +12,7 @@
     "lib": ["dom", "es2017"],
     "declaration": true,
     "allowSyntheticDefaultImports": true,
+    "resolveJsonModule": true
   },
   "exclude": ["node_modules", "lib", "es"]
 }

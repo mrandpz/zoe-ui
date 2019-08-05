@@ -197,8 +197,7 @@ function dist(done) {
   // 打包dist目录的时候要用到
   process.env.RUN_ENV = 'PRODUCTION';
   // getProject 以便于后面放放在tool下
-  const webpackConfig = require('./gulpConfig/getWebpackConfig')(false);
-  console.log(webpackConfig);
+  const webpackConfig = require(getProjectPath('webpack.config.js'));
   webpack(webpackConfig, (err, stats) => {
     if (err) {
       console.error(err.stack || err);

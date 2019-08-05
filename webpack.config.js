@@ -7,21 +7,20 @@ const { webpack } = getWebpackConfig;
 
 // noParse still leave `require('./locale' + name)` in dist files
 // ignore is better: http://stackoverflow.com/q/25384360
-function ignoreMomentLocale(webpackConfig) {
-  delete webpackConfig.module.noParse;
-  webpackConfig.plugins.push(new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/));
-}
+// function ignoreMomentLocale(webpackConfig) {
+//   delete webpackConfig.module.noParse;
+//   webpackConfig.plugins.push(new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/));
+// }
 
 function addLocales(webpackConfig) {
-  let packageName = 'antd-with-locales';
+  let packageName;
   if (webpackConfig.entry['antd.min']) {
     packageName += '.min';
   }
-  webpackConfig.entry[packageName] = './index-with-locales.js';
+  // webpackConfig.entry[packageName] = './index-with-locales.js';
   webpackConfig.output.filename = '[name].js';
 }
 
-// 日期类处理，暂时不需要
 function externalMoment(config) {
   config.externals.moment = {
     root: 'moment',
@@ -34,11 +33,10 @@ function externalMoment(config) {
 const webpackConfig = getWebpackConfig(false);
 if (process.env.RUN_ENV === 'PRODUCTION') {
   webpackConfig.forEach(config => {
-    ignoreMomentLocale(config);
+    // ignoreMomentLocale(config);
     externalMoment(config);
     addLocales(config);
     // https://docs.packtracker.io/uploading-your-webpack-stats/webpack-plugin
-    // 暂时不需要
     // config.plugins.push(
     //   new PacktrackerPlugin({
     //     project_token: '8adbb892-ee4a-4d6f-93bb-a03219fb6778',
@@ -50,7 +48,4 @@ if (process.env.RUN_ENV === 'PRODUCTION') {
   });
 }
 
-// module.exports = webpackConfig;
-
-// 没用到moment.js所以暂时不需要
-module.exports = {};
+module.exports = webpackConfig;

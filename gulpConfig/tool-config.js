@@ -4,7 +4,7 @@ const packageInfo = require('../package.json');
 
 // We need compile additional content for antd user
 function finalizeCompile() {
-  if (fs.existsSync(path.join(__dirname, './lib'))) {
+  if (fs.existsSync(path.join(__dirname, '../lib'))) {
     // Build package.json version to lib/version/index.js
     // prevent json-loader needing in user-side
     const versionFilePath = path.join(process.cwd(), 'lib', 'version', 'index.js');
@@ -50,7 +50,7 @@ function finalizeCompile() {
 
 function finalizeDist() {
   // 是否存在dist目录
-  if (fs.existsSync(path.join(__dirname, './dist'))) {
+  if (fs.existsSync(path.join(__dirname, '../dist'))) {
     // Build less entry file: dist/antd.less
     // 将所有的less文件在antd.less 中@import 进来
     fs.writeFileSync(

@@ -64,7 +64,6 @@ function getWebpackConfig(modules) {
   }
 
   const config = {
-    mode: 'development',
     devtool: 'source-map',
 
     output: {
