@@ -111,3 +111,24 @@ module.exports = {
 
 tips：整理文档
 
+使用 babel-plugin-import
+```
+// .babelrc or babel-loader option
+{
+  "plugins": [
+    ["import", {
+      "libraryName": "cpant",
+      "libraryDirectory": "es",
+      "style": "css" // `style: true` 会加载 less 文件
+    }]
+  ]
+}
+```
+
+// babel-plugin-import 会帮助你加载 JS 和 CSS
+import { Button } from 'cpant'
+想当于
+import Button  from 'cpant/Button'
+import Button  from 'cpant/Button/style'
+
+在ant-pro中使用就在webpack中添加
