@@ -114,6 +114,7 @@ tips：整理文档
 使用 babel-plugin-import
 ```
 // .babelrc or babel-loader option
+// 在ant-pro中使用就在webpack中添加
 {
   "plugins": [
     ["import", {
@@ -130,5 +131,3 @@ import { Button } from 'cpant'
 想当于
 import Button  from 'cpant/Button'
 import Button  from 'cpant/Button/style'
-
-在ant-pro中使用就在webpack中添加
