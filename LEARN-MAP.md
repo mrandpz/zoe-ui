@@ -111,6 +111,21 @@ module.exports = {
 
 tips：整理文档
 
+至此：开始抄袭ant-tool
+1：首先确定以gulpfile.js作为入口打包文件
+
+2：配置生成es，lib文件的 gulp任务，主要执行函数在tool-config.js 中,finalizeDist生成cpant.less,finalizeCompile获取所有组件的css，和生成版本号文件
+
+3：写babelify函数用于编译js文件
+
+4：写compile函数，执行  merge2([less, tsFilesStream, tsd, assets]) less，ts，
+d.ts,静态文件的生成
+
+5：dist函数用webpack用于生成dist目录的 .js 文件
+
+6：写index.js解决webpack打包没有成功打包 cpant.css的问题，
+
+
 使用 babel-plugin-import
 ```
 // .babelrc or babel-loader option
@@ -131,3 +146,6 @@ import { Button } from 'cpant'
 想当于
 import Button  from 'cpant/Button'
 import Button  from 'cpant/Button/style'
+
+
+开始写组件：

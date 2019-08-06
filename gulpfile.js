@@ -54,7 +54,7 @@ gulp.task('tsc', () =>
   ),
 );
 
-// 启动watch，检测到tsFiles的改动
+// 启动watch，检测到tsFiles的改动，有啥用？
 gulp.task(
   'watch-tsc',
   gulp.series('tsc', () => {
