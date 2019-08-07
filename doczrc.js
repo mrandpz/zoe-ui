@@ -4,6 +4,7 @@ import path from 'path';
 import { css } from 'docz-plugin-css';
 
 export default {
+  wrapper: 'src/wrapper',
   dest: '/docz-dist',
   codeSandbox: false,
   files: '**/*.mdx',
@@ -19,7 +20,7 @@ export default {
     }),
   ],
   onCreateWebpackChain(config) {
-    config.resolve.alias.set('@components', path.join(__dirname, 'components'));
+    config.resolve.alias.set('cpant', path.join(__dirname, 'components'));
     return config;
   },
 };
