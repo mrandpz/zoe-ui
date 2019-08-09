@@ -1,7 +1,32 @@
-node_modules
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# dependencies
+**/node_modules
+
+# production
+/.vscode
+
+# misc
+.DS_Store
+npm-debug.log*
+yarn-error.log
+
+/coverage
+.idea
+yarn.lock
+package-lock.json
+*bak
+jsconfig.json
+.vscode
 .docz
-docz-dist
-coverage
-dist
-es
-lib
+
+# visual studio code
+.history
+*.log
+
+
+# screenshot
+screenshot
+/dist
+/es
+/lib
