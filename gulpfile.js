@@ -55,28 +55,28 @@ gulp.task('tsc', () =>
 );
 
 // 启动watch，检测到tsFiles的改动，有啥用？
-gulp.task(
-  'watch-tsc',
-  gulp.series('tsc', () => {
-    // 执行tsc任务后
-    watch(tsFiles, f => {
-      if (f.event === 'unlink') {
-        const fileToDelete = f.path.replace(/\.tsx?$/, '.js');
-        // ？？
-        if (fs.existsSync(fileToDelete)) {
-          fs.unlinkSync(fileToDelete);
-        }
-        return;
-      }
-      const myPath = path.relative(cwd, f.path);
-      compileTs(
-        gulp.src([myPath, 'typings/**/*.d.ts'], {
-          base: cwd,
-        }),
-      );
-    });
-  }),
-);
+// gulp.task(
+//   'watch-tsc',
+//   gulp.series('tsc', () => {
+//     // 执行tsc任务后
+//     watch(tsFiles, f => {
+//       if (f.event === 'unlink') {
+//         const fileToDelete = f.path.replace(/\.tsx?$/, '.js');
+//         // ？？
+//         if (fs.existsSync(fileToDelete)) {
+//           fs.unlinkSync(fileToDelete);
+//         }
+//         return;
+//       }
+//       const myPath = path.relative(cwd, f.path);
+//       compileTs(
+//         gulp.src([myPath, 'typings/**/*.d.ts'], {
+//           base: cwd,
+//         }),
+//       );
+//     });
+//   }),
+// );
 // =============================== typescript =====================================
 
 // =============================== babel =================
@@ -262,4 +262,4 @@ gulp.task(
 );
 
 // =============================== task end=================
-gulp.task('default', gulp.series('compile', 'watch-tsc'));
+gulp.task('default', gulp.series('compile'));

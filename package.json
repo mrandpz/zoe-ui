@@ -11,7 +11,7 @@
     "es"
   ],
   "scripts": {
-    "build": "node ./scripts/run.js",
+    "start": "node ./scripts/run.js",
     "docz:dev": "rimraf .docz && docz dev",
     "tag": "node ./scripts/tag.js",
     "lint-staged": "lint-staged",
@@ -127,6 +127,12 @@
       "git add"
     ]
   },
+  "sideEffects": [
+    "dist/*",
+    "es/**/style/*",
+    "lib/**/style/*",
+    "*.less"
+  ],
   "husky": {
     "hooks": {
       "pre-commit": "npm run lint-staged"

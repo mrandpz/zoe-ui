@@ -2,3 +2,6 @@ node_modules
 .docz
 docz-dist
 /coverage
+/dist
+/es
+/lib

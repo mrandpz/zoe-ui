@@ -39,7 +39,7 @@ var Button = /** @class */ (function(_super) {
   __extends(Button, _super);
   function Button() {
     var _this = (_super !== null && _super.apply(this, arguments)) || this;
-    _this.name = '1223234';
+    _this.name = '12232341';
     return _this;
   }
   Button.prototype.render = function() {
