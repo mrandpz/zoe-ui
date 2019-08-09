@@ -46,15 +46,16 @@ function compileTs(stream) {
 }
 
 // 编译ts文件
-gulp.task('tsc', () =>
-  compileTs(
-    gulp.src(tsFiles, {
-      base: cwd,
-    }),
-  ),
-);
+// gulp.task('tsc', () =>
+//   compileTs(
+//     gulp.src(tsFiles, {
+//       base: cwd,
+//     }),
+//   ),
+// );
 
 // 启动watch，检测到tsFiles的改动，有啥用？
+
 // gulp.task(
 //   'watch-tsc',
 //   gulp.series('tsc', () => {

@@ -13,7 +13,6 @@ export default {
   plugins: [
     css({
       preprocessor: 'less',
-      cssmodules: true,
     }),
     css({
       preprocessor: 'postcss',

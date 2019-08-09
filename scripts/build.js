@@ -10,7 +10,7 @@ gulpProcess.stderr.on('data', function(data) {
   console.log(data);
 });
 
-var doczProcess = exec('rimraf .docz && docz dev', {});
+var doczProcess = exec('rimraf .docz && docz build', {});
 
 doczProcess.stdout.on('data', function(data) {
   console.log(data);
