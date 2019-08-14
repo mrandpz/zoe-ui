@@ -28,7 +28,6 @@
     "no-reference": true,
     "no-shadowed-variable": true,
     "no-string-literal": true,
-    "no-trailing-whitespace": true,
     "no-unused-expression": true,
     "no-var-keyword": true,
     "one-variable-per-declaration": [true, "ignore-for-loop"],
@@ -36,6 +35,7 @@
     "radix": true,
     "space-in-parens": true,
     "switch-default": true,
+    "jsx-no-lambda": false,
     "trailing-comma": [
       true,
       {

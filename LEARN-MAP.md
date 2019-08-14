@@ -67,9 +67,8 @@ yarn add webpack webpack-cli --dev
 增加 .prettierignore
 
 
-TODO: ant的css是单独引入的，如果要以es6的方式去引入，则需要借助[babel-plugin-import](https://github.com/ant-design/babel-plugin-import/blob/master/src/Plugin.js)
 
-写一个gulp用来从 .scss 输出css 安装gulp-sass gulp-css
+写一个gulp用来从 .less 输出css 安装gulp-less gulp-css
 
 用gulp分别规范，本地测试流程，打包流程(设置版本号，提交代码，等)
 
@@ -127,7 +126,7 @@ d.ts,静态文件的生成
 
 
 使用 babel-plugin-import
-```
+```js
 // .babelrc or babel-loader option
 // 在ant-pro中使用就在webpack中添加
 {
@@ -141,11 +140,65 @@ d.ts,静态文件的生成
 }
 ```
 
-// babel-plugin-import 会帮助你加载 JS 和 CSS
-import { Button } from 'cpant'
-想当于
-import Button  from 'cpant/Button'
-import Button  from 'cpant/Button/style'
+// babel-plugin-import 会帮助你加载 JS 和 CSS  
+```js
+import { Button } from 'cpant'  
+想当于  
+import Button  from 'cpant/Button'  
+import Button  from 'cpant/Button/style'  
+```
 
+# 开始写组件：
 
-开始写组件：
+### 查看antd 的目录结构
+```
+├── color           5：颜色变化，如贝塞尔曲线
+│   ├── bezierEasing.less
+│   ├── colorPalette.less
+│   ├── colors.less
+│   └── tinyColor.less
+├── core            4：css核心代码
+│   ├── base.less
+│   ├── iconfont.less
+│   ├── index.less
+│   ├── motion      4.1：运动函数
+│   │   ├── fade.less
+│   │   ├── move.less
+│   │   ├── other.less
+│   │   ├── slide.less
+│   │   ├── swing.less
+│   │   └── zoom.less
+│   └── motion.less
+├── index.less
+├── index.tsx         2：引入themes,引入core
+├── mixins            6：定义一些常用的样式函数，比如clearfix
+│   ├── clearfix.less
+│   ├── compatibility.less
+│   ├── iconfont.less
+│   ├── index.less
+│   ├── motion.less
+│   ├── operation-unit.less
+│   ├── reset.less
+│   └── size.less
+├── themes
+│   ├── default.less 
+│   └── index.less    3：定义主题变量
+├── reset.less 
+└── reset.tsx         1：重置浏览器样式
+```
+
+查看顺序：  
+1：reset重置浏览器样式
+
+2：引入themes，引入core  
+  - themes 引入了default.less 为什么不是index.less？可能是因为扩展的原因
+  - core 
+
+3：在core中需要对mixins的引用  
+4： 创建好文件之后，在写的过程填充需要的样式
+
+### 写第一个组件
+
+button 
+---
+
