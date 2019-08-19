@@ -1,45 +1,78 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import * as PropTypes from 'prop-types';
-// import classNames from 'classnames';
+import classNames from 'classnames';
 
-export interface ButtonState {
-  intNum: number;
-}
+import { ConfigConsumer, ConfigConsumerProps } from '../config-provider';
+import { tuple } from '../_util/type';
 
-export interface ButtonProps {
+/**
+ * ButtonTypes -> ['default', 'primary', ...]
+ * typeof ButtonTypes -> string[]
+ * (typeof ButtonTypes)[number] -> 'default' | 'primary' | ....
+ */
+const ButtonTypes = tuple('default', 'primary', 'ghost', 'dashed', 'danger', 'link');
+export type ButtonType = (typeof ButtonTypes)[number];
+
+const ButtonHTMLTypes = tuple('submit', 'button', 'reset');
+export type ButtonHTMLType = (typeof ButtonHTMLTypes)[number];
+
+export interface BaseButtonProps {
   /**
-   * @default yo ho
+   * @default
    */
-  name?: string;
-  other?: number;
+  prefixCls?: string;
+  className?: string;
+  children?: React.ReactNode;
+  type?: ButtonType;
+  onClick?: React.MouseEventHandler<HTMLElement>;
 }
+
+export type NativeButtonProps = {
+  htmlType?: ButtonHTMLType;
+  onClick?: React.MouseEventHandler<HTMLElement>;
+} & BaseButtonProps;
+
+export type ButtonProps = NativeButtonProps;
 
 const Button: React.SFC<ButtonProps> = props => {
-  const initState: ButtonState = {
-    intNum: 1,
+  const handleClick: React.MouseEventHandler<HTMLButtonElement> = e => {
+    const { onClick } = props;
+    if (onClick) {
+      (onClick as React.MouseEventHandler<HTMLButtonElement>)(e);
+    }
   };
 
-  // 数据加载状态
-  const [intNum, setIntNum] = useState(initState.intNum);
+  const renderButton = ({ getPrefixCls }: ConfigConsumerProps) => {
+    const { prefixCls: customizePrefixCls, className, children, type, ...rest } = props;
 
-  // 初始化
-  useEffect(() => {}, []);
+    const prefixCls = getPrefixCls('btn', customizePrefixCls);
 
-  return (
-    <div>
-      我是hooks组件${intNum}
-      <button onClick={() => setIntNum(2)}>{props.name}点击+11</button>
-    </div>
-  );
-};
+    const classes = classNames(prefixCls, className, {
+      [`${prefixCls}-${type}`]: type,
+    });
 
-Button.defaultProps = {
-  name: 'yo ho',
+    // React 不识别DOM 元素上的htmlType
+    const { htmlType, ...otherProps } = rest as NativeButtonProps;
+    return (
+      <button
+        {...(otherProps as NativeButtonProps)}
+        className={classes}
+        type={htmlType}
+        onClick={handleClick}
+      >
+        {children}
+      </button>
+    );
+  };
+
+  return <ConfigConsumer>{renderButton}</ConfigConsumer>;
 };
 
 Button.propTypes = {
-  name: PropTypes.string,
-  other: PropTypes.number,
+  prefixCls: PropTypes.string,
+  className: PropTypes.string,
+  type: PropTypes.oneOf(ButtonTypes),
+  onClick: PropTypes.func,
 };
 
 export default Button;
