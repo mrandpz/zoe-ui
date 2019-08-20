@@ -47,13 +47,13 @@ function getWebpackConfig(modules) {
   ]);
 
   // Other package
-  if (pkg.name !== 'cpant') {
+  if (pkg.name !== 'zoe') {
     babelConfig.plugins.push([
       resolve('babel-plugin-import'),
       {
         style: 'css',
         libraryDirectory: 'es',
-        libraryName: 'cpant',
+        libraryName: 'zoe',
       },
       'other-package-babel-plugin-import', // 这是啥子玩意
     ]);

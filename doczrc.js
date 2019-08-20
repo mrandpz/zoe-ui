@@ -19,7 +19,7 @@ export default {
     }),
   ],
   onCreateWebpackChain(config) {
-    config.resolve.alias.set('cpant', path.join(__dirname, 'components'));
+    config.resolve.alias.set('zoe', path.join(__dirname, 'components'));
     return config;
   },
 };

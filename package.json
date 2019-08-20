@@ -1,5 +1,5 @@
 {
-  "name": "cpant",
+  "name": "zoe",
   "version": "1.0.1",
   "description": "A npm package build for own learn",
   "main": "lib/index.js",

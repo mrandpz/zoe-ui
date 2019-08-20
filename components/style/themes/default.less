@@ -1,1 +1,30 @@
-@cpant-prefix: cpant;
+@zoe-prefix: zoe;
+
+// ---------颜色
+@primary-color: #fe473c;
+@black: #000;
+@gray: #f6f6f6;
+@white: #fff;
+
+@text-color: fade(@black, 65%);
+
+@font-size-base: 14px;
+@padding-md: 16px; // small containers and buttons
+@border-radius-base: 4px;
+
+// Border
+@border-color-base: hsv(0, 0, 85%);
+
+// Button
+@btn-padding-base: 0 @padding-md - 1px;
+@btn-border-radius-base: @border-radius-base;
+@btn-height-base: 32px;
+@btn-text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.12);
+@btn-primary-shadow: 0 2px 0 rgba(0, 0, 0, 0.045);
+
+@btn-primary-color: #fff;
+@btn-primary-bg: @primary-color;
+
+@btn-default-color: @text-color;
+@btn-default-bg: @white;
+@btn-default-border: @border-color-base;

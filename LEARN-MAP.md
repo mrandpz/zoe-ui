@@ -113,7 +113,7 @@ tips：整理文档
 至此：开始抄袭ant-tool
 1：首先确定以gulpfile.js作为入口打包文件
 
-2：配置生成es，lib文件的 gulp任务，主要执行函数在tool-config.js 中,finalizeDist生成cpant.less,finalizeCompile获取所有组件的css，和生成版本号文件
+2：配置生成es，lib文件的 gulp任务，主要执行函数在tool-config.js 中,finalizeDist生成zoe.less,finalizeCompile获取所有组件的css，和生成版本号文件
 
 3：写babelify函数用于编译js文件
 
@@ -122,7 +122,7 @@ d.ts,静态文件的生成
 
 5：dist函数用webpack用于生成dist目录的 .js 文件
 
-6：写index.js解决webpack打包没有成功打包 cpant.css的问题，
+6：写index.js解决webpack打包没有成功打包 zoe.css的问题，
 
 
 使用 babel-plugin-import
@@ -132,7 +132,7 @@ d.ts,静态文件的生成
 {
   "plugins": [
     ["import", {
-      "libraryName": "cpant",
+      "libraryName": "zoe",
       "libraryDirectory": "es",
       "style": "css" // `style: true` 会加载 less 文件
     }]
@@ -142,10 +142,10 @@ d.ts,静态文件的生成
 
 // babel-plugin-import 会帮助你加载 JS 和 CSS  
 ```js
-import { Button } from 'cpant'  
+import { Button } from 'zoe'  
 想当于  
-import Button  from 'cpant/Button'  
-import Button  from 'cpant/Button/style'  
+import Button  from 'zoe/Button'  
+import Button  from 'zoe/Button/style'  
 ```
 
 # 开始写组件：

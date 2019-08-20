@@ -1,6 +1,34 @@
-.test {
-  background: #ccc;
-}
-.test2 {
-  background: #ffc;
+@import '../../style/themes/index';
+@import './mixin.less';
+
+@btn-prefix-cls: ~'@{zoe-prefix}-btn';
+
+.@{btn-prefix-cls} {
+  // 推荐使用.btn() 加上括号，不加的虽然还可以使用，但是已经飞起
+  .btn();
+  .btn-default();
+
+  > i,
+  > span {
+    display: inline-block;
+    pointer-events: none;
+  }
+
+  &-primary {
+    .btn-primary();
+  }
+
+  &-dashed {
+    .btn-dashed;
+  }
+
+  &-block {
+    .btn-block;
+  }
+
+  &&-loading {
+    position: relative;
+    pointer-events: none;
+    background: @gray;
+  }
 }

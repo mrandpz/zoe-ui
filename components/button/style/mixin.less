@@ -1,0 +1,105 @@
+// 基础使用
+.button-size(@height; @padding; @font-size; @border-radius) {
+  height: @height;
+  padding: @padding;
+  font-size: @font-size;
+  border-radius: @border-radius;
+}
+
+.btn() {
+  position: relative;
+  display: inline-block;
+  white-space: nowrap;
+  text-align: center;
+  box-shadow: none;
+  border: none;
+  background-image: none;
+  border: 1px solid #ccc;
+  cursor: pointer;
+  user-select: none;
+  touch-action: manipulation;
+  .button-size(@btn-height-base; @btn-padding-base; @font-size-base; @btn-border-radius-base);
+  &,
+  &:active,
+  &:focus {
+    outline: none;
+  }
+
+  &.disabled,
+  &[disabled] {
+    cursor: not-allowed;
+    > * {
+      pointer-events: none;
+    }
+  }
+}
+
+.btn-default() {
+  // .button-variant-other(@btn-default-color; @btn-default-bg; @btn-default-border);
+  &:hover,
+  &:focus,
+  &:active,
+  &.active {
+    text-decoration: none;
+    // background: @btn-default-bg;
+  }
+}
+
+.button-color(@color; @background; @border) {
+  color: @color;
+  background-color: @background;
+  border-color: @border;
+  // a inside Button which only work in Chrome
+  // http://stackoverflow.com/a/17253457
+  > a:only-child {
+    color: currentColor;
+    &::after {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      background: transparent;
+      content: '';
+    }
+  }
+}
+
+.button-variant-other(@color; @background; @border) {
+  .button-color(@color; @background; @border);
+
+  &:active,
+  &.active {
+    .button-color(@color; darken(@background, 10%) ;darken(@background, 10%));
+  }
+}
+
+.button-variant-primary(@color; @background) {
+  .button-color(@color; @background; @background);
+
+  text-shadow: @btn-text-shadow;
+  box-shadow: @btn-primary-shadow;
+
+  &:hover {
+    .button-color(@color; fadeout(@background, 10%) ;fadeout(@background, 10%));
+  }
+
+  &:active,
+  &.active {
+    .button-color(@color; darken(@background, 10%) ;darken(@background, 10%));
+  }
+}
+
+// primary button style
+.btn-primary() {
+  .button-variant-primary(@btn-primary-color; @btn-primary-bg);
+}
+
+.btn-dashed() {
+  .button-variant-other(@btn-default-color, @btn-default-bg, @btn-default-border);
+  border-style: dashed;
+}
+
+.btn-block() {
+  width: 100%;
+}

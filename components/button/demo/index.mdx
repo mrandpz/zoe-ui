@@ -4,7 +4,7 @@ menu: Components
 ---
 
 import { Playground, Props } from 'docz';
-import { Button } from 'cpant';
+import { Button } from 'zoe';
 
 # Button
 
@@ -15,7 +15,23 @@ import { Button } from 'cpant';
 ## Basic usage
 
 <Playground>
-  <Button type="primary" onClick={() => alert(1)}>
-    点击食用
+  <Button type="primary">点我呀，蠢货</Button>
+  <Button>点我呀，蠢货</Button>
+  <Button type="dashed">点我呀，蠢货</Button>
+  <Button disabled>点我呀，蠢货</Button>
+</Playground>
+
+## block
+
+<Playground>
+  <Button block>点我呀，蠢货</Button>
+  <Button type="primary" block>
+    点我呀，蠢货
   </Button>
+</Playground>
+
+## add loading status
+
+<Playground>
+  <Button loading>点我呀，蠢货</Button>
 </Playground>

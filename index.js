@@ -1,5 +1,5 @@
 /* eslint no-console:0 */
-// 这个文件解决了没有自动生成cpant.css的
+// 这个文件解决了没有自动生成zoe.css的
 function camelCase(name) {
   return name.charAt(0).toUpperCase() + name.slice(1).replace(/-(\w)/g, (m, n) => n.toUpperCase());
 }
