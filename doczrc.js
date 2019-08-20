@@ -4,6 +4,7 @@ import path from 'path';
 import { css } from 'docz-plugin-css';
 
 export default {
+  indexHtml: 'index.html',
   wrapper: 'src/wrapper',
   dest: '/docz-dist',
   codeSandbox: false,

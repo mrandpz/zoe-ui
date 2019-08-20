@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import * as PropTypes from 'prop-types';
 import classNames from 'classnames';
 
@@ -83,7 +83,8 @@ const Button: React.SFC<ButtonProps> = props => {
         type={htmlType}
         onClick={handleClick}
       >
-        {loading && 'loading..'}
+        {/* todo add svg loading status */}
+        {loading && 'loading...   '}
         {children}
       </button>
     );

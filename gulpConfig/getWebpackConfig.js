@@ -187,7 +187,7 @@ ${pkg.name} v${pkg.version}
 Mr.pz write ui framework from 0,嘻嘻
       `),
       new WebpackBar({
-        name: '🚚  学习ant-tool',
+        name: '🚚  zoe is coming soon',
         color: '#2f54eb',
       }),
       new CleanUpStatsPlugin(),
