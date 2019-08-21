@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import * as PropTypes from 'prop-types';
 import classNames from 'classnames';
 
-import { ConfigConsumer, ConfigConsumerProps } from '../config-provider';
+import ConfigContext, { ConfigConsumer, ConfigConsumerProps } from '../config-provider';
 import { tuple } from '../_util/type';
 
 /**
@@ -42,55 +42,54 @@ export type ButtonProps = NativeButtonProps;
 const Button: React.SFC<ButtonProps> = props => {
   const [prevLoading, setPrevLoading] = useState(false);
 
+  const { getPrefixCls }: ConfigConsumerProps = useContext(ConfigContext);
+
+  const {
+    prefixCls: customizePrefixCls,
+    className,
+    children,
+    type,
+    size,
+    block,
+    loading = false,
+    onClick,
+    ...rest
+  } = props;
+
   const handleClick: React.MouseEventHandler<HTMLButtonElement> = e => {
-    const { onClick } = props;
     if (onClick) {
       (onClick as React.MouseEventHandler<HTMLButtonElement>)(e);
     }
   };
 
-  const renderButton = ({ getPrefixCls }: ConfigConsumerProps) => {
-    const {
-      prefixCls: customizePrefixCls,
-      className,
-      children,
-      type,
-      size,
-      block,
-      loading = false,
-      ...rest
-    } = props;
+  const prefixCls = getPrefixCls('btn', customizePrefixCls);
 
-    const prefixCls = getPrefixCls('btn', customizePrefixCls);
+  const classes = classNames(prefixCls, className, {
+    [`${prefixCls}-${type}`]: type,
+    [`${prefixCls}-${size}`]: size,
+    [`${prefixCls}-block`]: block,
+    [`${prefixCls}-loading`]: loading,
+  });
 
-    const classes = classNames(prefixCls, className, {
-      [`${prefixCls}-${type}`]: type,
-      [`${prefixCls}-${size}`]: size,
-      [`${prefixCls}-block`]: block,
-      [`${prefixCls}-loading`]: loading,
-    });
+  if (loading !== prevLoading) {
+    setPrevLoading(loading);
+  }
 
-    if (loading !== prevLoading) {
-      setPrevLoading(loading);
-    }
+  // React 不识别DOM 元素上的htmlType
+  const { htmlType, ...otherProps } = rest as NativeButtonProps;
 
-    // React 不识别DOM 元素上的htmlType
-    const { htmlType, ...otherProps } = rest as NativeButtonProps;
-    return (
-      <button
-        {...(otherProps as NativeButtonProps)}
-        className={classes}
-        type={htmlType}
-        onClick={handleClick}
-      >
-        {/* todo add svg loading status */}
-        {loading && 'loading...   '}
-        {children}
-      </button>
-    );
-  };
-
-  return <ConfigConsumer>{renderButton}</ConfigConsumer>;
+  return (
+    <button
+      {...(otherProps as NativeButtonProps)}
+      className={classes}
+      type={htmlType}
+      onClick={handleClick}
+    >
+      {/* todo add svg loading status */}
+      {loading && 'loading...   '}
+      {children}
+    </button>
+  );
 };
 
 Button.defaultProps = {
