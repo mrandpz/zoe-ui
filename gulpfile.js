@@ -159,6 +159,10 @@ function compile(modules) {
     .src(['components/**/*.@(png|svg)'])
     .pipe(gulp.dest(modules === false ? esDir : libDir));
 
+  const Iconfont = gulp
+    .src(['components/icon/iconfont.js'])
+    .pipe(gulp.dest(modules === false ? `${esDir}/icon` : `${libDir}/icon`));
+
   let error = 0;
   const source = ['components/**/*.tsx', 'components/**/*.ts', 'typings/**/*.d.ts'];
 
@@ -188,7 +192,7 @@ function compile(modules) {
 
   const tsFilesStream = babelify(tsResult.js, modules);
   const tsd = tsResult.dts.pipe(gulp.dest(modules === false ? esDir : libDir));
-  return merge2([less, tsFilesStream, tsd, assets]);
+  return merge2([less, tsFilesStream, tsd, assets, Iconfont]);
 }
 // =============================== compile includes  end=================
 

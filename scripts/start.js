@@ -11,6 +11,7 @@ doczProcess.stdout.on('data', function(data) {
 
 doczProcess.stderr.on('data', function(data) {
   console.log(data);
+  console.log('open with http://127.0.0.1:3000/');
 });
 
 function updateLessFile() {

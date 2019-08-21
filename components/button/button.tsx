@@ -2,7 +2,7 @@ import React, { useState, useContext } from 'react';
 import * as PropTypes from 'prop-types';
 import classNames from 'classnames';
 
-import ConfigContext, { ConfigConsumer, ConfigConsumerProps } from '../config-provider';
+import ConfigContext, { ConfigConsumerProps } from '../config-provider';
 import { tuple } from '../_util/type';
 
 /**
