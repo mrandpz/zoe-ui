@@ -3,22 +3,26 @@ import * as PropTypes from 'prop-types';
 
 // require('./iconfont.js');
 import './iconfont';
-// import classNames from 'classnames';
+import classNames from 'classnames';
 
-export interface IconProps {}
+export interface IconProps {
+  type: string;
+  className: string;
+}
 
-const Icon = () => {
+const Icon = (props: IconProps) => {
+  const { type, className, ...rest } = props;
+  const classnames = classNames('icon', className);
   return (
-    <svg className="icon" aria-hidden="true">
-      <use xlinkHref="#icon-loading" />
+    <svg className={classnames} aria-hidden="true" {...rest}>
+      <use xlinkHref={`#icon-${type}`} />
     </svg>
   );
 };
 
-Icon.defaultProps = {};
-
 Icon.propTypes = {
-  name: PropTypes.string,
+  type: PropTypes.string,
+  className: PropTypes.string,
 };
 
 export default Icon;
