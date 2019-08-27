@@ -1,5 +1,4 @@
 import React from 'react';
-import defaultTheme from 'sinoui-components/styles/defaultTheme';
 // import { ThemeProvider } from 'sinoui-components/styles';
 
 import '../components/style/reset.less';
