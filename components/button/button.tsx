@@ -39,7 +39,7 @@ export type NativeButtonProps = {
 // 等扩展
 export type ButtonProps = NativeButtonProps;
 
-const Button: React.SFC<ButtonProps> = props => {
+const Button: React.FC<ButtonProps> = props => {
   const [prevLoading, setPrevLoading] = useState(false);
 
   const { getPrefixCls }: ConfigConsumerProps = useContext(ConfigContext);
