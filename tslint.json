@@ -25,7 +25,7 @@
     "no-internal-module": true,
     "no-multi-spaces": true,
     "no-namespace": true,
-    "no-reference": true,
+    "no-reference": false,
     "no-shadowed-variable": true,
     "no-string-literal": true,
     "no-unused-expression": true,

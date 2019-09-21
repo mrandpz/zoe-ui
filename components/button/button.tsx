@@ -2,7 +2,7 @@ import React, { useState, useContext } from 'react';
 import * as PropTypes from 'prop-types';
 import classNames from 'classnames';
 
-import ConfigContext, { ConfigConsumer, ConfigConsumerProps } from '../config-provider';
+import ConfigContext, { ConfigConsumerProps } from '../config-provider';
 import { tuple } from '../_util/type';
 
 /**
@@ -39,7 +39,7 @@ export type NativeButtonProps = {
 // 等扩展
 export type ButtonProps = NativeButtonProps;
 
-const Button: React.SFC<ButtonProps> = props => {
+const Button: React.FC<ButtonProps> = props => {
   const [prevLoading, setPrevLoading] = useState(false);
 
   const { getPrefixCls }: ConfigConsumerProps = useContext(ConfigContext);
