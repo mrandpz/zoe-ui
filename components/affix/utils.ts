@@ -74,6 +74,7 @@ export function addObserveTarget(target: HTMLElement | Window | null, affix: Aff
 
     // Add listener
     TRIGGER_EVENTS.forEach(eventName => {
+      // !.  为ts语法 不确定entity类型，断言非空
       entity!.eventHandlers[eventName] = addEventListener(target, eventName, (event: Event) => {
         // tslint:disable-next-line: no-shadowed-variable
         entity!.affixList.forEach(affix => {
